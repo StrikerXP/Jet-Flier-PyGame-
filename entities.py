@@ -1,13 +1,8 @@
 import pygame
 import random
+from debug import debug
 from setting import WIN_HEIGHT, WIN_WIDTH, enemy_speed_min, enemy_speed_max
-from pygame.locals import (
-    RLEACCEL,
-    K_w,
-    K_s,
-    K_a,
-    K_d,
-)
+from pygame.locals import *
 
 pygame.init()
 # Define a Player object by extending pygame.sprite.Sprites
@@ -41,11 +36,16 @@ class Player(pygame.sprite.Sprite):
         if self.rect.bottom >= WIN_HEIGHT:
             self.rect.bottom = WIN_HEIGHT
 
+    def attack(self):
+
+        pass
+
     def dead(self):
         screen = pygame.display.get_surface()
-        self.surf = pygame.image.load('img/boom.png').convert_alpha()
-        self.rect.inflate_ip(61, 62)
-        screen.blit(self.surf, self.rect)
+        surf_dead = pygame.image.load('img/boom.png').convert_alpha()
+        rect = surf_dead.get_rect()
+        self.rect.inflate_ip(rect.height, rect.width)
+        screen.blit(surf_dead, self.rect)
 
 #Creating enemy class by extending pygame.sprite.Sprite
 class Enemy(pygame.sprite.Sprite):

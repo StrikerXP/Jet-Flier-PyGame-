@@ -41,7 +41,7 @@ def paused(main_txt):
                 music.unpause()
                 return
 
-        screen.fill((1, 1, 1))
+        screen.fill((1, 1, 1, 255))
         screen.blit(text_surf, text_rect)
 
         mouse = pygame.mouse.get_pos()

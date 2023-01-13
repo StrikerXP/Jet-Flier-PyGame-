@@ -9,6 +9,7 @@ from setting import WIN_HEIGHT, WIN_WIDTH
 # Updated to conform to flake8 and black standards
 from pygame.locals import (
     K_ESCAPE,
+    K_SPACE,
     KEYDOWN,
     QUIT,
 )
@@ -86,14 +87,16 @@ while running:
             clouds.add(new_cloud)
             all_layers.add(new_cloud)
 
+        # Attack
+        elif (event.type == KEYDOWN and event.key == K_SPACE):
+            player.attack()
+
     # Get the set of keys pressed and check for user input
     pressed_keys = pygame.key.get_pressed()
     player.move(pressed_keys)
 
     # Update player, enemy position and clouds
     all_layers.update()
-
-    debug(player.rect)
 
     # Fill the screen with white
     screen.fill((135, 206, 250))
