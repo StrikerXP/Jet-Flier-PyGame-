@@ -26,7 +26,7 @@ def paused(main_txt):
     text_rect.center = ((WIN_WIDTH/2), (WIN_HEIGHT/3))
     resume_green = button(screen, 'green', WIN_WIDTH / 3, WIN_HEIGHT / 1.95)
     resume_black = button(screen, 'black', WIN_WIDTH / 3, WIN_HEIGHT / 1.95)
-    exit_game = button(screen, (200, 0, 0), WIN_WIDTH / 1.77, WIN_HEIGHT / 1.95)
+    # exit_game = button(screen, (200, 0, 0), WIN_WIDTH / 1.77, WIN_HEIGHT / 1.95)
 
     while paused:
         music = pygame.mixer.music
@@ -41,11 +41,10 @@ def paused(main_txt):
                 music.unpause()
                 return
 
-        # screen.fill((1, 1, 1))
+        screen.fill((1, 1, 1))
         screen.blit(text_surf, text_rect)
 
         mouse = pygame.mouse.get_pos()
-        debug(mouse)
 
         if WIN_WIDTH/3 + WIN_WIDTH/11 > mouse[0] > WIN_WIDTH/3 and WIN_HEIGHT/1.95 + WIN_HEIGHT/11 > mouse[1] > WIN_HEIGHT/1.95:
             resume_green

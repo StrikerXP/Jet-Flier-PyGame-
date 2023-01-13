@@ -42,7 +42,10 @@ class Player(pygame.sprite.Sprite):
             self.rect.bottom = WIN_HEIGHT
 
     def dead(self):
-        self.surf = pygame.image.load('img/boom.png').convert()
+        screen = pygame.display.get_surface()
+        self.surf = pygame.image.load('img/boom.png').convert_alpha()
+        self.rect.inflate_ip(61, 62)
+        screen.blit(self.surf, self.rect)
 
 #Creating enemy class by extending pygame.sprite.Sprite
 class Enemy(pygame.sprite.Sprite):

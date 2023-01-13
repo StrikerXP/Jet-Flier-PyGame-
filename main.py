@@ -1,6 +1,7 @@
 # Import the pygame module
 import pygame, sys
 from text_and_pause import paused
+from debug import debug
 from entities import Player, Enemy, Cloud
 from setting import WIN_HEIGHT, WIN_WIDTH
 
@@ -92,6 +93,8 @@ while running:
     # Update player, enemy position and clouds
     all_layers.update()
 
+    debug(player.rect)
+
     # Fill the screen with white
     screen.fill((135, 206, 250))
 
@@ -102,10 +105,11 @@ while running:
     # Check if any enemies have collided with the player
     if pygame.sprite.spritecollideany(player, enemies):
         # If so, then remove the player and stop the loop
+        screen.fill((135, 206, 250))
         player.dead()
-        screen.blit(player.surf, player.rect)
         # debug(player.surf, 50)
         pygame.display.update(player)
+        pygame.time.wait(3000)
         paused('Game Over')
         running = False
 
