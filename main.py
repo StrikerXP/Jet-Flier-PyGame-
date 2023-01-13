@@ -28,6 +28,7 @@ pygame.mixer.music.play(loops = -1)
 
 # Create the screen object
 # The size is determined by the constant SCREEN_WIDTH and SCREEN_HEIGHT
+# pygame.FULLSCREEN
 screen = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
 
 #Custom event number itterator
@@ -69,7 +70,7 @@ while running:
             sys.exit()
 
         elif (event.type == KEYDOWN and event.key == K_ESCAPE):
-            paused('Pause', 'black', screen)
+            paused('Pause')
 
         # Add a new enemy?
         elif event.type == ADDENEMY:
@@ -89,7 +90,7 @@ while running:
     player.move(pressed_keys)
 
     # Update player, enemy position and clouds
-    all_layers.draw(screen)
+    all_layers.update()
 
     # Fill the screen with white
     screen.fill((135, 206, 250))
@@ -103,8 +104,9 @@ while running:
         # If so, then remove the player and stop the loop
         player.dead()
         screen.blit(player.surf, player.rect)
-        pygame.display.flip()
-        paused('Game Over', 'red', screen)
+        # debug(player.surf, 50)
+        pygame.display.update(player)
+        paused('Game Over')
         running = False
 
     # This line says "Draw surf onto the screen at the center"

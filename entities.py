@@ -9,8 +9,9 @@ from pygame.locals import (
     K_d,
 )
 
+pygame.init()
 # Define a Player object by extending pygame.sprite.Sprites
-# The surface drawn on the screen is now an attribute of 'player'
+# The imageace drawn on the screen is now an attribute of 'player'
 class Player(pygame.sprite.Sprite):
     def __init__(self, layer):
         super(Player, self).__init__()
@@ -42,7 +43,6 @@ class Player(pygame.sprite.Sprite):
 
     def dead(self):
         self.surf = pygame.image.load('img/boom.png').convert()
-        self.surf.set_colorkey((255, 255, 255), RLEACCEL)
 
 #Creating enemy class by extending pygame.sprite.Sprite
 class Enemy(pygame.sprite.Sprite):
